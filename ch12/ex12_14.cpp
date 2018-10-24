@@ -44,6 +44,7 @@ void f(destination &d)
 {
 	connection conn = connect(&d);
 	shared_ptr<connection> p(&conn, end_connection);
+	//shared_ptr<connection> p(&conn, [](connection *p) {disconnect(*p); })   //使用lambda代替
 	cout << "connecting now(" << p.use_count() << ")" << std::endl;
 }
 
